@@ -77,3 +77,5 @@ plt.title("Merged Output")
 # Changing from BGR to RGB.
 img_NZ_rgb = cv2.cvtColor(img_NZ_bgr, cv2.COLOR_BGR2RGB)
 plt.imshow(img_NZ_rgb)
+# %% Cell 12
+# CHANGING TO HSV COLOR SPACE
