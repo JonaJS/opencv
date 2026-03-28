@@ -46,7 +46,7 @@ print(f"The data type of the image is: {coke_img.dtype}")
 # %% Cell 8
 # what happened?
 # the color displayed below is different from the actual image. Matplotlib
-# expectsthe image in RGB format whereas OpenCV stores images in BGR format.
+# expects the image in RGB format whereas OpenCV stores images in BGR format.
 # Thus, for correct display, we need to reverse the channels of the image.
 plt.imshow(coke_img)
 # %% Cell 9
@@ -79,3 +79,5 @@ img_NZ_rgb = cv2.cvtColor(img_NZ_bgr, cv2.COLOR_BGR2RGB)
 plt.imshow(img_NZ_rgb)
 # %% Cell 12
 # CHANGING TO HSV COLOR SPACE
+img_NZ_hsv = cv2.cvtColor(img_NZ_bgr, cv2.COLOR_BGR2HSV)
+plt.imshow(img_NZ_hsv)
