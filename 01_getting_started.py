@@ -3,6 +3,11 @@ import cv2
 import matplotlib.pyplot as plt
 
 # %% Cell 2
+# Flags
+# cv2.IMREAD_GRAYSCALE or 0: Loads image in grayscale mode
+# cv2.IMREAD_COLOR or 1: Loads a color image. Any transparency of image will be neglected. It is the default flag.
+# cv2.IMREAD_UNCHANGED or -1: Loads image as such including alpha channel.
+
 # READING IMAGES USING OPENCV
 # Read image as gray scale (0)
 cb_img = cv2.imread(f"./assets/images/chapter1/checkerboard_18x18.png", 0)
