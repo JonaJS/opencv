@@ -106,3 +106,8 @@ cv2.imwrite("resized_cropped_region_2x.png", resized_cropped_region_2x)
 # %% Cell 11
 cropped_img = cropped_img[:, :, ::-1]
 cv2.imwrite("cropped_img.png", cropped_img)
+
+
+"""
+Flipping the image.
+"""
