@@ -3,6 +3,11 @@ import cv2
 import matplotlib.pyplot as plt
 
 # %% Cell 2
+# Flags
+# cv2.IMREAD_GRAYSCALE or 0: Loads image in grayscale mode
+# cv2.IMREAD_COLOR or 1: Loads a color image. Any transparency of image will be neglected. It is the default flag.
+# cv2.IMREAD_UNCHANGED or -1: Loads image as such including alpha channel.
+
 # READING IMAGES USING OPENCV
 # Read image as gray scale (0)
 cb_img = cv2.imread(f"./assets/images/chapter1/checkerboard_18x18.png", 0)
@@ -46,7 +51,7 @@ print(f"The data type of the image is: {coke_img.dtype}")
 # %% Cell 8
 # what happened?
 # the color displayed below is different from the actual image. Matplotlib
-# expectsthe image in RGB format whereas OpenCV stores images in BGR format.
+# expects the image in RGB format whereas OpenCV stores images in BGR format.
 # Thus, for correct display, we need to reverse the channels of the image.
 plt.imshow(coke_img)
 # %% Cell 9
@@ -79,3 +84,40 @@ img_NZ_rgb = cv2.cvtColor(img_NZ_bgr, cv2.COLOR_BGR2RGB)
 plt.imshow(img_NZ_rgb)
 # %% Cell 12
 # CHANGING TO HSV COLOR SPACE
+img_NZ_hsv = cv2.cvtColor(img_NZ_bgr, cv2.COLOR_BGR2HSV)
+
+h, s, v = cv2.split(img_NZ_hsv)
+
+plt.figure(figsize=[20, 5])
+plt.subplot(141);plt.imshow(h, cmap='gray');plt.title("Hue")
+plt.subplot(142);plt.imshow(s, cmap='gray');plt.title("Saturation")
+plt.subplot(143);plt.imshow(v, cmap='gray');plt.title("Value")
+
+plt.subplot(144)
+plt.imshow(img_NZ_rgb)
+plt.title("Original")
+# %% Cell 13
+# Modifying individual channel
+
+h_new = h + 10
+img_NZ_merged = cv2.merge((h_new, s, v))
+img_NZ_rgb2 = cv2.cvtColor(img_NZ_merged, cv2.COLOR_HSV2RGB)
+
+# Show channels
+plt.figure(figsize=[20, 5])
+plt.subplot(141); plt.imshow(h, cmap="gray"); plt.title("Hue channel")
+plt.subplot(142); plt.imshow(s, cmap="gray"); plt.title("Saturation channel")
+plt.subplot(143); plt.imshow(v, cmap="gray"); plt.title("Value channel")
+plt.subplot(144);plt.imshow(img_NZ_rgb2);plt.title("Original")
+# %% Cell 14
+# Save the image
+cv2.imwrite("./assets/images/chapter1/New_Zeland_Lake_SAVED.png", img_NZ_bgr)
+
+# %% Cell 15
+# read image as Color
+img_NZ_bgr3 = cv2.imread(f"./assets/images/chapter1/New_Zealand_Lake.jpg", cv2.IMREAD_COLOR)
+print(f"img_NZ_bgr shape (H, W, C) is: {img_NZ_bgr3.shape}")
+
+# read image as Gray
+img_NZ_gray = cv2.imread(f"./assets/images/chapter1/New_Zealand_Lake.jpg", cv2.IMREAD_GRAYSCALE)
+print(f"img_NZ_gray shape (H, W) is: {img_NZ_gray.shape}")
