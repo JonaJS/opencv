@@ -109,5 +109,21 @@ cv2.imwrite("cropped_img.png", cropped_img)
 
 
 """
-Flipping the image.
+Flipping Images
+
+The function flip flips the array in one of three different ways (row and column indices are 0-based):
+Function Syntax
+
+dst = cv.flip( src, flipCode )
+
+dst: output array of the same size and type as src.
+
+The function has 2 required arguments:
+
+    src: input image
+    flipCode: a flag to specify how to flip the array; 0 means flipping around the x-axis and positive value (for example, 1) means flipping around y-axis. Negative value (for example, -1) means flipping around both axes.
+
+OpenCV Documentation
+
+flip: Documentation link
 """
